@@ -79,14 +79,35 @@ const compose = function() {
 
 //--------makeCycler-------// 
 
-const makeCycler = function() {
-  
+const makeCycler = function(list) {
+  let index = 0;
+  let newList = list;
+  const length = list.length;
+  return function() {
+    if(index == length) { index = 0; }
+    return newList[index++];
+  }
 }
 
 //--------makeCycler-------// 
+const makeDeltaTracker = function(old) {
+  let object = {};
+  object.old = old;
+  let count = 0;
+  return function(newValue) {
+    object.delta = 0;
+    if(count > 0){ 
+      object.old = object.new  
+    };
 
-const makeDeltaTracker = function() {
-  
+    if(newValue) {
+      object.delta = newValue;
+    };
+
+    object.new = object.delta + object.old;
+    count++;
+    return object;
+  }
 }
 
 //--------curry-------// 
@@ -106,8 +127,8 @@ const curry = function(funcName,arg1) {
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
 exports.makeCounterFromN=makeCounterFromN;
-//exports.makeDeltaTracker=makeDeltaTracker;
+exports.makeDeltaTracker=makeDeltaTracker;
 exports.makeFiboGenerator=makeFiboGenerator;
-//exports.makeCycler=makeCycler;
+exports.makeCycler=makeCycler;
 exports.curry=curry;
 exports.compose=compose;

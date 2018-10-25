@@ -107,7 +107,7 @@ const makeDeltaTracker = function(old) {
 
     object.new = object.delta + object.old;
     count++;
-    return object;
+    return Object.assign({}, object);
   }
 }
 

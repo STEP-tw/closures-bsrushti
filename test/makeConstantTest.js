@@ -6,10 +6,10 @@ const testMakeConstantWithNoArgs = function() {
   let constantlyReturnString = makeConstant('hello');
   let constantlyReturnArray = makeConstant([1, 2, 3]);
   let constantlyReturnObject = makeConstant({a: 1, b: 2});
-  assert.equal(2, constantlyReturnTwo);
-  assert.equal('hello', constantlyReturnString);
-  assert.deepEqual([1, 2, 3], constantlyReturnArray);
-  assert.deepEqual({a: 1, b: 2}, constantlyReturnObject);
+  assert.equal(2, constantlyReturnTwo());
+  assert.equal('hello', constantlyReturnString());
+  assert.deepEqual([1, 2, 3], constantlyReturnArray());
+  assert.deepEqual({a: 1, b: 2}, constantlyReturnObject());
 };
 
 const testMakeConstantWithUselessArg = function() {
@@ -17,10 +17,10 @@ const testMakeConstantWithUselessArg = function() {
   let constantlyReturnString = makeConstant('hello');
   let constantlyReturnArray = makeConstant([1, 2, 3]);
   let constantlyReturnObject = makeConstant({a: 1, b: 2});
-  assert.equal(2, constantlyReturnTwo);
-  assert.equal('hello', constantlyReturnString);
-  assert.deepEqual([1, 2, 3], constantlyReturnArray);
-  assert.deepEqual({a: 1, b: 2}, constantlyReturnObject);
+  assert.equal(2, constantlyReturnTwo(1));
+  assert.equal('hello', constantlyReturnString(1));
+  assert.deepEqual([1, 2, 3], constantlyReturnArray(1));
+  assert.deepEqual({a: 1, b: 2}, constantlyReturnObject(1));
 };
 
 const runTests = function() {

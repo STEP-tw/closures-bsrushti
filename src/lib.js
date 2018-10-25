@@ -9,7 +9,9 @@ const compose = undefined;
 //--------makeConstant-------//
 
 const makeConstant = function(argument) {
+    return function(){
     return argument;
+    };
 };
 
 

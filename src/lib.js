@@ -81,15 +81,16 @@ const compose = function() {
 
 const makeCycler = function(list) {
   let index = 0;
-  let newList = list;
+  const result = [];
   const length = list.length;
   return function() {
+    result[index] = list[index];
     if(index == length) { index = 0; }
-    return newList[index++];
+    return result[index++];
   }
 }
 
-//--------makeCycler-------// 
+//--------makeDeltaTracker-------// 
 const makeDeltaTracker = function(old) {
   let object = {};
   object.old = old;

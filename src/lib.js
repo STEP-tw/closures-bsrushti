@@ -1,5 +1,4 @@
 const makeCounterFromN = undefined;
-const makeCounterFromZero = undefined;
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
@@ -14,8 +13,14 @@ const makeConstant = function(argument) {
     };
 };
 
+//--------makeConstant-------//
 
-
+const makeCounterFromZero = function() {
+  let counter = 0;
+  return function(){
+    return counter++;
+  }
+};
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;

@@ -58,6 +58,7 @@ const runTests = function() {
   testFiboGeneratorWithASingleArg();
   console.log("testFiboGeneratorWithASingleArg passed");
 
+
   testFiboGeneratorWithTwoArgs();
   console.log("testFiboGeneratorWithTwoArgs passed");
 

@@ -1,6 +1,4 @@
 const makeDeltaTracker = undefined;
-const makeFiboGenerator = undefined;
-const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;
 
@@ -21,16 +19,28 @@ const makeCounterFromZero = function() {
   }
 };
 
-//--------makeCounterFromN-------// 
+//--------makeFiboGenerator-------// 
 
-const makeCounterFromN = function(start) {
-  let counter = start;
+const makeFiboGenerator = function(number1, number2) {
+  let oldNum = 1;
+  let newNum = 0;
+  let currNum = 0;
+  if(number1 && number2) {
+    currNum = newNum = number1;
+    oldNum = currNum+1;;
+  }
+
+  if(number1 && !number2) {
+    oldNum = number1;
+  }
+
   return function(){
-    return counter++;
+    currNum = newNum;
+    newNum = oldNum + newNum;
+    oldNum = currNum;
+    return currNum;
   }
 };
-
-
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;

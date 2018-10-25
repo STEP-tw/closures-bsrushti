@@ -1,6 +1,3 @@
-const makeDeltaTracker = undefined;
-const curry = undefined;
-const compose = undefined;
 
 //--------makeConstant-------//
 
@@ -18,6 +15,17 @@ const makeCounterFromZero = function() {
     return counter++;
   }
 };
+
+//--------makeCounterFromN-------// 
+
+const makeCounterFromN = function(start) {
+  let counter = start;
+  return function(){
+    return counter++;
+  }
+};
+
+
 
 //--------makeFiboGenerator-------// 
 
@@ -42,11 +50,50 @@ const makeFiboGenerator = function(number1, number2) {
   }
 };
 
+//--------compose-------// 
+
+const lengthOf = function(list) {  
+    return list.length-1
+}
+
+const isZeroIncludes = function(list) {
+  return list.includes(list);
+}
+
+const getNonZeroValues = function(number) {
+  return (number != 0);
+}
+
+const compose = function(numberList1,numberList2) {
+  return function (numberList1, numberList2) {
+    if(numberList1 && !numberList2) {
+      return lengthOf(numberList1);
+    }
+    if(numberList1, numberList2) {
+      numberList1 = numberList1.filter(getNonZeroValues);
+      numberList2 = numberList2.filter(getNonZeroValues);
+      return numberList1.concat(numberList2);
+    }
+  }
+}
+
+const makeCycler = function() {
+  
+}
+
+const makeDeltaTracker = function() {
+  
+}
+
+const curry = function() {
+  
+}
+
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
 exports.makeCounterFromN=makeCounterFromN;
-exports.makeDeltaTracker=makeDeltaTracker;
+//exports.makeDeltaTracker=makeDeltaTracker;
 exports.makeFiboGenerator=makeFiboGenerator;
-exports.makeCycler=makeCycler;
-exports.curry=curry;
+//exports.makeCycler=makeCycler;
+//exports.curry=curry;
 exports.compose=compose;

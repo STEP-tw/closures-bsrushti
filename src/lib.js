@@ -64,7 +64,7 @@ const getNonZeroValues = function(number) {
   return (number != 0);
 }
 
-const compose = function(numberList1,numberList2) {
+const compose = function() {
   return function (numberList1, numberList2) {
     if(numberList1 && !numberList2) {
       return lengthOf(numberList1);

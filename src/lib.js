@@ -53,15 +53,13 @@ const makeFiboGenerator = function(number1, number2) {
 
 //--------compose-------// 
 
-const compose = function(fun1, fun2) {
+const compose = function(funcOne, funcTwo) {
   return function(numberList1, numberList2) {
     if(!numberList2) {
-      result = fun2(numberList1);
-      return fun1(result);
+      result = funcTwo(numberList1);
+      return funcOne(result);
     }
-    let list1 = fun1(numberList1);
-    let list2 = fun1(numberList2);
-    return fun2(list1,list2);
+    return funcTwo(funcOne(numberList1),funcOne(numberList2));
   }
 };
 

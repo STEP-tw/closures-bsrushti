@@ -35,7 +35,7 @@ const makeFiboGenerator = function(number1, number2) {
   let currNum = 0;
   if(number1 && number2) {
     currNum = newNum = number1;
-    oldNum = currNum+1;;
+    oldNum = currNum + 1;
   }
 
   if(number1 && !number2) {
@@ -48,34 +48,22 @@ const makeFiboGenerator = function(number1, number2) {
     oldNum = currNum;
     return currNum;
   }
+
 };
 
 //--------compose-------// 
 
-const lengthOf = function(list) {  
-    return list.length-1
-}
-
-const isZeroIncludes = function(list) {
-  return list.includes(list);
-}
-
-const getNonZeroValues = function(number) {
-  return (number != 0);
-}
-
-const compose = function() {
-  return function (numberList1, numberList2) {
-    if(numberList1 && !numberList2) {
-      return lengthOf(numberList1);
+const compose = function(fun1, fun2) {
+  return function(numberList1, numberList2) {
+    if(!numberList2) {
+      result = fun2(numberList1);
+      return fun1(result);
     }
-    if(numberList1, numberList2) {
-      numberList1 = numberList1.filter(getNonZeroValues);
-      numberList2 = numberList2.filter(getNonZeroValues);
-      return numberList1.concat(numberList2);
-    }
+    let list1 = fun1(numberList1);
+    let list2 = fun1(numberList2);
+    return fun2(list1,list2);
   }
-}
+};
 
 //--------makeCycler-------// 
 

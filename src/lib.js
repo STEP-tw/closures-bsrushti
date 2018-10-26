@@ -7,25 +7,20 @@ const makeConstant = function(argument) {
     };
 };
 
-//--------makeCounterFromZero-------//
-
-const makeCounterFromZero = function() {
-  let counter = 0;
-  return function(){
-    return counter++;
-  }
-};
-
 //--------makeCounterFromN-------// 
 
 const makeCounterFromN = function(start) {
   let counter = start;
-  return function(){
+  return function (){
     return counter++;
   }
 };
 
+//--------makeCounterFromZero-------//
 
+const makeCounterFromZero = function() {
+    return makeCounterFromN(0);
+};
 
 //--------makeFiboGenerator-------// 
 

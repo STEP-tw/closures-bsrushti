@@ -99,14 +99,9 @@ const makeDeltaTracker = function(old) {
 
 //--------curry-------// 
 
-const curry = function(funcName,arg1) {
-  return function(arg2,arg3) {
-    if(arg2 && !arg3) {
-      return funcName(arg1,arg2);
-    }
-    if(arg1 && arg3) {
-      return funcName(arg1,arg2,arg3); 
-    }
+const curry = function(funcName,value1) {
+  return function(value2,value3) {
+      return funcName(value1,value2,value3); 
   }
 };
 

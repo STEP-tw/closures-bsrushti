@@ -2,7 +2,7 @@
 //--------makeConstant-------//
 
 const makeConstant = function(argument) {
-    return function(){
+  return function(){
     return argument;
     };
 };
@@ -19,7 +19,7 @@ const makeCounterFromN = function(start) {
 //--------makeCounterFromZero-------//
 
 const makeCounterFromZero = function() {
-    return makeCounterFromN(0);
+  return makeCounterFromN(0);
 };
 
 //--------makeFiboGenerator-------// 
@@ -28,6 +28,7 @@ const makeFiboGenerator = function(number1, number2) {
   let oldNum = 1;
   let newNum = 0;
   let currNum = 0;
+
   if(number1 && number2) {
     currNum = newNum = number1;
     oldNum = currNum + 1;
@@ -50,11 +51,7 @@ const makeFiboGenerator = function(number1, number2) {
 
 const compose = function(funcOne, funcTwo) {
   return function(numberList1, numberList2) {
-    if(!numberList2) {
-      result = funcTwo(numberList1);
-      return funcOne(result);
-    }
-    return funcTwo(funcOne(numberList1),funcOne(numberList2));
+    return funcOne(funcTwo(numberList1,numberList2));
   }
 };
 
@@ -72,23 +69,13 @@ const makeCycler = function(list) {
 }
 
 //--------makeDeltaTracker-------// 
-const makeDeltaTracker = function(old) {
-  let object = {};
-  object.old = old;
-  let count = 0;
-  return function(newValue) {
-    object.delta = 0;
-    if(count > 0){ 
-      object.old = object.new  
-    };
 
-    if(newValue) {
-      object.delta = newValue;
-    };
-
-    object.new = object.delta + object.old;
-    count++;
-    return Object.assign({}, object);
+const makeDeltaTracker = function(initialValue) {
+  let newValue = initialValue;
+  return function(deltaValue = 0) {
+    let oldValue = newValue;
+    newValue = deltaValue + oldValue;
+    return {old:oldValue, delta:deltaValue, new:newValue};
   }
 }
 
